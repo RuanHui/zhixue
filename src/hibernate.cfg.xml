@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	<hibernate-configuration>
+		<session-factory>
+			<!-- 数据库方言:根据底层的数据库不同而生成不同SQL -->
+			<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+			<!-- 配置显示SQL -->
+			<property name="hibernate.show_sql">true</property>
+			<!-- 配置格式化SQL -->
+			<property name="hibernate.format_sql">true</property>
+			<!-- 配置hbm2ddl -->
+			<property name="hibernate.hbm2ddl.auto">update</property>
+			
+			<!-- 加载映射文件 -->
+			<mapping resource="cn/arunner/zhixue/domain/User.hbm.xml"/>
+		</session-factory>
+</hibernate-configuration>

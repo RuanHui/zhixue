@@ -1,0 +1,36 @@
+package cn.arunner.zhixue.service.impl;
+
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.arunner.zhixue.dao.UserDao;
+import cn.arunner.zhixue.dao.impl.UserDaoImpl;
+import cn.arunner.zhixue.domain.User;
+import cn.arunner.zhixue.service.UserService;
+
+@Transactional
+public class UserServiceImpl implements UserService{
+	private UserDaoImpl userDao;
+	public void setUserDao(UserDaoImpl userDao) {
+		this.userDao = userDao;
+	}
+
+	@Override
+	public User login(String username, String password) throws SQLException {
+//		UserDao userDao = (UserDao) BeanFactory.getBean("UserDao");
+		
+		//问题:userdao为空
+		
+		return userDao.login(username,password);
+	}
+
+	@Override
+	public void register(User user) throws SQLException {
+//		UserDao userDao = (UserDao) BeanFactory.getBean("UserDao");
+		//MailUtils.sendMail(user.getEmail(), user.getUid());
+		userDao.register(user);
+	}
+	
+}

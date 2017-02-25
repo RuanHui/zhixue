@@ -1,0 +1,34 @@
+package cn.arunner.zhixue.service.impl;
+
+import java.sql.SQLException;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.arunner.zhixue.dao.UserDao;
+import cn.arunner.zhixue.domain.User;
+import cn.arunner.zhixue.service.UserService;
+import cn.arunner.zhixue.utils.BeanFactory;
+import cn.arunner.zhixue.utils.MailUtils;
+
+@Transactional
+public class UserServiceImpl implements UserService{
+	private UserDao userDao;
+	
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	@Override
+	public User login(String username, String password) throws SQLException {
+//		UserDao userDao = (UserDao) BeanFactory.getBean("UserDao");
+		return userDao.login(username,password);
+	}
+
+	@Override
+	public void register(User user) throws SQLException {
+//		UserDao userDao = (UserDao) BeanFactory.getBean("UserDao");
+		//MailUtils.sendMail(user.getEmail(), user.getUid());
+		userDao.register(user);
+	}
+	
+}
